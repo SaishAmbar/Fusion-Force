@@ -1,3 +1,12 @@
+---
+title: Token Economist RL
+emoji: 🧠
+colorFrom: green
+colorTo: blue
+sdk: docker
+pinned: false
+---
+
 # 🧠 Token-Economist RL — Self-Regulating Reasoning Budget
 
 > **An OpenEnv-compatible RL environment that trains agents to self-regulate their reasoning budget — directly analogous to how LLMs like Llama decide how many tokens to spend on chain-of-thought reasoning.**
