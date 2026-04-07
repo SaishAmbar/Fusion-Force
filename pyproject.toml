@@ -21,4 +21,4 @@ dependencies = [
 [project.scripts]
 train = "train:main"
 inference = "inference:main"
-server = "server.app:run"
+server = "server.app:main"
