@@ -10,7 +10,7 @@ RUN python train.py
 # Environment variables for inference (override at runtime)
 ENV API_BASE_URL=https://api-inference.huggingface.co/v1
 ENV MODEL_NAME=Qwen/Qwen2.5-72B-Instruct
-# HF_TOKEN must be provided at runtime: docker run -e HF_TOKEN=<token> ...
+# HF_TOKEN must be provided at runtime via Space Secrets
 
-EXPOSE 8000
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+EXPOSE 7860
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7860"]

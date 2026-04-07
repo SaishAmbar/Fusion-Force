@@ -3,4 +3,4 @@ name: token-economist
 type: space
 runtime: fastapi
 app: app:app
-port: 8000
+port: 7860
