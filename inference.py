@@ -39,9 +39,9 @@ def log_step(step: int, action: str, reward: float, done: bool, error=None):
     err = error if error else "null"
     print(f"[STEP] step={step} action={action} reward={reward:.2f} done={str(done).lower()} error={err}")
 
-def log_end(success: bool, steps: int, rewards: list):
+def log_end(score: float, steps: int, rewards: list):
     reward_str = ",".join(f"{r:.2f}" for r in rewards)
-    print(f"[END] success={str(success).lower()} steps={steps} rewards={reward_str}")
+    print(f"[END] score={score:.4f} steps={steps} rewards={reward_str}")
 
 
 # ── LLM-based Agent ──────────────────────────────────────────────────────────
@@ -170,8 +170,11 @@ def main():
         results = run_task(task, n_episodes=n_episodes)
         all_results[task["name"]] = results
 
+        # Laplacian-smoothed score: strictly in (0, 1), never 0.0 or 1.0
+        score = (results["successes"] + 0.5) / (n_episodes + 1.0)
+
         log_end(
-            success=results["accuracy"] > 0.5,
+            score=score,
             steps=n_episodes,
             rewards=results["all_rewards"],
         )
